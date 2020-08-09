@@ -1,0 +1,5 @@
+# NAO MONITORAR OS SEGUINTES ARQUIVOS NO GIT
+
+#pasta node_modules
+node_modules
+

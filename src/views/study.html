@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#8257E5">
+
+
+    <title>Proffy - Sua Plataforma de Estudo Online</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/partials/header.css">
+    <link rel="stylesheet" href="style/partials/forms.css">
+
+
+    <link rel="stylesheet" href="style/partials/page-study.css">
+
+    <link rel="shortcut icon" href="image/favicon.png" type="image/x-icon">
+</head>
+<body id="page-study">
+
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a href="/">
+                    <img src="/image/icons/back.svg" alt="Botao Voltar para Home">
+                </a>
+
+                <img src="/image/logo.svg" alt="Logo Proffy - Sua Plataforma de Estudos Online">
+               
+            </div>
+
+            <div class="header-content">
+                <strong>Esses são os Proffys disponiveis</strong>
+
+                <form action="" method="get" id="search-teachers">
+                    <div class="select-block">
+                        <label for="subject">Máteria</label>
+                        <select name="subject" id="subject">
+                            <option value="" disabled="" hidden="">
+                                Selecione uma Opção
+                            </option>
+
+                        {% for subject in subjects %}
+                             <option value="{{loop.index}}"
+                                {{"selected" if filters.subject == loop.index}} >{{subject}}
+                            </option>
+                         {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <div class="select-block">
+                        <label for="weekday">Dia da Semana</label>
+                        <select name="weekday" id="weekday">
+                            <option value="" disabled="" hidden="" >Selecione uma Opção</option>
+
+                        {% for weekday in weekdays %}
+                            <option value="{{loop.index0}}"
+                               {{"selected" if filters.weekday == loop.index0}} >{{weekday}}
+                           </option>
+                        {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="time">Hora</label>
+                        <input type="time" name="time" id="time" value="{{filters.time}}">
+                    </div>
+
+                    <button type="submit">Filtrar</button>
+
+
+
+                </form>
+            </div>
+        </header>
+
+        <main>
+
+           {% for proffy in proffys %}
+            <article class="teacher-item">
+                <header>
+                    <img 
+                        src="{{proffy.avatar}}" 
+                        alt="{{proffy.name}}">
+                    <div>
+                        <strong>{{proffy.name}}</strong>
+                        <span>{{proffy.subject}}</span>
+                    </div>
+                </header>
+            
+                <p>E{{proffy.bio}}</p>
+            
+                <footer>
+                    <p>Preço/hora<strong>R$ {{proffy.cost}}</strong>
+                    </p>
+                    <a href="http://api.whatsapp.com/send?1=pt_BR&phone=55{{proffy.whatsapp}}&text=Tenho interesse na sua aula de {{proffy.subject}} {{proffy.name}}" class="button" target="_blank" rel="noopener noreferrer">
+                        <img src="/image/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
+                    </a>
+                </footer>
+            </article>
+
+            {% endfor %}
+
+
+        </main>
+    </div>
+    
+
+   
+</body>
+</html>
