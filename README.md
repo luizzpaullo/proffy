@@ -19,3 +19,6 @@ npm install nodemon -D
 npm install nunjucks
 
 
+// Instalar SQLite
+npm install sqlite-async
+
