@@ -18,7 +18,7 @@ function cloneField(){
    fields.forEach(function(field) {
        //pega o field do momento e limpa ele
        field.value = ""
-   });
+   })
 
 
     //coloca na pagina, mas antes devo informar onde
